@@ -1,0 +1,29 @@
+<h1>Ajouter une Série</h1>
+<form action="/newserie" method="POST">
+    Titre : 
+    <input type="text" name="Title" value="<%= Title %>" ><br>
+    Note (sur 10):
+    <input type="number" min="0" max="10" name="Note"  value = "<%= Note %>" id="nb_revue"><br>
+    Description : 
+    <input type="text" name="Description" value="<%= Description %>"><br>
+    Catégorie: 
+    <input type="number" min="0" max="10" name="FK_CatégorieID"  value = "<%= FK_CatégorieID %>" id="nb_revue"><br>
+    <table>
+        <tr>
+            <th>1</th>
+            <td>Action</td>
+            <th>2</th>
+            <td>Aventure</td>
+            <th>3</th>
+            <td>Comédie</td>
+            <th>4</th>
+            <td>Horreur</td>
+            <th>5</th>
+            <td>Drama</td>
+        </tr>
+    </table>
+    <input type="submit" name="save" value="Sauver"><br>
+</form>
+<form action="/mainpage" method="get">
+    <button type="submit"> Retour à la liste </button>
+ </form>

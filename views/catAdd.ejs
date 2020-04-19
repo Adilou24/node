@@ -1,0 +1,25 @@
+<h1>Ajouter une Catégorie</h1>
+<form action="/newcat" method="POST">
+    Catégorie ID: 
+    <input type="number" min="6" max="10" name= "CatégorieID"  value = "<%= CatégorieID %>"><br>
+    Nom de la Catégorie:
+    <input type="text" name="CatName" value="<%= CatName %>"><br>
+    <table>
+        <tr>
+            <th>1</th>
+            <td>Action</td>
+            <th>2</th>
+            <td>Aventure</td>
+            <th>3</th>
+            <td>Comédie</td>
+            <th>4</th>
+            <td>Horreur</td>
+            <th>5</th>
+            <td>Drama</td>
+        </tr>
+    </table>
+    <input type="submit" name="save" value="Sauver"><br>
+</form>
+<form action="/categorie" method="get">
+    <button type="submit"> Retour à la liste </button>
+ </form>
