@@ -3,8 +3,8 @@ let serieList = [];
 let Serie = require('../models/seriesModel')
 
 exports.mainpage = function (req,res){
-     
-    connection.query("SELECT ser.SerieID, ser.Title , ser.Description , ser.Note , cat.CatName , sta.Statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID;", function (error, resultSQL) {
+     console.log(req.session)
+    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , cat.CatName , sta.Statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) {
         if (error)  {
             response.status(400).send(error);        
         }

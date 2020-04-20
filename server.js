@@ -57,12 +57,13 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
   
     if (email && password) {
       connection.query(
-        'SELECT * FROM user WHERE email = ? AND password = ?',  //set conn query to mysql
+        'SELECT * FROM users.user WHERE email = ? AND password = ?',  //set conn query to mysql
         [email, password],    //insert email and password as data
         (err, results) => {   //function for error throwing and the results
           if (err) throw err;
           if (results.length > 0) {
-            req.session.loggedin = true;   //set loggedin property as true
+            console.log(results)
+            req.session.userid = results[0].userid;  //set loggedin property as true
             req.session.loggedout = false;  //set loggedout property as false
             req.session.email = email;    //set email property as email itself
             res.redirect('/mainpage');    //redirect to home
@@ -77,6 +78,22 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
       );
     }
   });
+      // chek if authorized
+    const check = (req, res, next) => {
+        if(req.session && req.session.userid >= 0){
+            next();
+        }
+        else{
+            res.send('Acces denied');
+        }
+    };
+    // get content endpoint
+    app.get('/mainpage', check , function(req, res){
+        res.render("mainpage.ejs");
+    });
+
+
+
   
   app.post('/auth_register', (req, res) => {  //post function to authorize registration
     let register_data = {   //set register_data variable to have name, email, and password property
