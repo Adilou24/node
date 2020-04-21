@@ -5,10 +5,6 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Import routes
-let router = require('./routes');
-app.use('/', router);
-
 // **************************************************************************************************
 // Session
 var session = require('express-session');
@@ -23,22 +19,8 @@ app.use(session({
 // Cookie
 var cookieParser = require ('cookie-Parser')
 app.use(cookieParser())
-
-
-app.get('/cookie', function(req,res){
-    res.cookie("cookie_name", 'my_cookie_value').send('Cookie is set');
-});
 app.use(cookieParser());
 
-app.get('/coo',(req,res) => {
-console.log("Cookies : ", req.cookies);
-res.send('Cookie value : ' + req.cookies.cookie_name)
-});
-
-app.get('/clearcookie', function(req,res){
-    res.clearCookie('cookie_name');
-    res.send('Cookie deleted');
-});
 //************************************************************************************************** */
 // Login
 
@@ -64,7 +46,6 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
           if (results.length > 0) {
             console.log(results)
             req.session.userid = results[0].userid;  //set loggedin property as true
-            req.session.loggedout = false;  //set loggedout property as false
             req.session.email = email;    //set email property as email itself
             res.redirect('/mainpage');    //redirect to home
           } else {
@@ -78,23 +59,7 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
       );
     }
   });
-      // chek if authorized
-    const check = (req, res, next) => {
-        if(req.session && req.session.userid >= 0){
-            next();
-        }
-        else{
-            res.send('Acces denied');
-        }
-    };
-    // get content endpoint
-    app.get('/mainpage', check , function(req, res){
-        res.render("mainpage.ejs");
-    });
 
-
-
-  
   app.post('/auth_register', (req, res) => {  //post function to authorize registration
     let register_data = {   //set register_data variable to have name, email, and password property
       name: req.body.name,
@@ -112,6 +77,9 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
 
 //*************************************************************************************************** */
 
+// Import routes
+let router = require('./routes');
+app.use('/', router);
 
 // Launch app to listen to specified port
 var port = 8080
