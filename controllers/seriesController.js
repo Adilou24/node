@@ -38,7 +38,7 @@ exports.Finis = function (req,res){
     });
 }
 exports.serieFormAdd = function(req, res) {
-    res.render('serieAdd.ejs', {Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :""});
+    res.render('serieAdd.ejs', {Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :"", FK_iduser:""});
 }
 exports.addserie =  function(req, res) {
     let SerieID = req.body.SerieID;
@@ -47,7 +47,8 @@ exports.addserie =  function(req, res) {
     let Description = req.body.Description;
     let FK_CatégorieID = req.body.FK_CatégorieID;
     let CatName = req.body.CatName;
-    let serie = new Serie(SerieID, Title, Note, Description,FK_CatégorieID, CatName);
+    let FK_iduser = req.session.userid;
+    let serie = new Serie(SerieID, Title, Note, Description,FK_CatégorieID, CatName, FK_iduser);
         console.log(serie);
         connection.query("INSERT INTO users.series set ?", serie, function (error, resultSQL) {
             if(error) {
