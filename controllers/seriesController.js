@@ -38,7 +38,7 @@ exports.Finis = function (req,res){
     });
 }
 exports.serieFormAdd = function(req, res) {
-    res.render('serieAdd.ejs', {Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :"", FK_iduser:""});
+    res.render('serieAdd.ejs', {Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :"", FK_iduser:req.session.userid});
 }
 exports.addserie =  function(req, res) {
     let SerieID = req.body.SerieID;
