@@ -2,7 +2,6 @@ let User = require('../models/userModel');
 let connection = require('../db');
 let userList = [];
 
-
 // // Add or update one user in the list
 // exports.userNew =  function(request, response) {
 //     let iduser = request.body.iduser
@@ -69,3 +68,4 @@ let userList = [];
 //     }); 
     
 //  };
+

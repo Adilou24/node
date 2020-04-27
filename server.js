@@ -76,11 +76,21 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
   });
 
 //*************************************************************************************************** */
+app.all('/*', function(req, res, next) {
+  // CORS headers
+  res.header("Access-Control-Allow-Origin", "*"); // restrictitto the requireddomain
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
+  if(req.method== 'OPTIONS') {res.status(200).end();
+  } 
+  else { next(); }
+});
 
+//**************************************************************************************************** */
 // Import routes
 let router = require('./routes');
 app.use('/', router);
 
 // Launch app to listen to specified port
-var port = 8080
+var port = 8000
 app.listen(port, function () { console.log('Running server on port ' + port); })
