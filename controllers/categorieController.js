@@ -3,7 +3,7 @@ let catListe = [];
 let Categorie = require('../models/categoriesModel')
 
 exports.listeCat1 = function (req,res){
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, sta.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where FK_CatégorieID = 1 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 1 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
         if (error)  {
             response.status(400).send(error);        
         }
@@ -20,7 +20,7 @@ exports.listeCat1 = function (req,res){
 
 exports.listeCat2 = function (req,res){
      
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, sta.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where FK_CatégorieID = 2 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 2 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
         if (error)  {
             response.status(400).send(error);        
         }
@@ -34,7 +34,7 @@ exports.listeCat2 = function (req,res){
 }
 exports.listeCat3 = function (req,res){
      
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, sta.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where FK_CatégorieID = 3 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 3 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
         if (error)  {
             response.status(400).send(error);        
         }
@@ -48,7 +48,7 @@ exports.listeCat3 = function (req,res){
 }
 exports.listeCat4 = function (req,res){
      
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, sta.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where FK_CatégorieID = 4 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 4 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
         if (error)  {
             response.status(400).send(error);        
         }
@@ -62,7 +62,7 @@ exports.listeCat4 = function (req,res){
 }
 exports.listeCat5 = function (req,res){
      
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, sta.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID inner join users.statut sta on ser.SerieID = sta.SerieID where FK_CatégorieID = 5 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 5 AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) { 
         if (error)  {
             response.status(400).send(error);        
         }
@@ -88,7 +88,7 @@ exports.addcat =  function(req, res) {
                 res.status(400).send(error);
             }
             else{
-                res.status(201).redirect('/categorie');
+                res.status(201).redirect('/categorie1');
                
 
              

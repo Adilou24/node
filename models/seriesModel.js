@@ -5,8 +5,9 @@ class Serie {
     Description ="";
     FK_CatégorieID ="";
     FK_iduser ="";
+    Statut ="";
 
-    constructor(SerieID, Title, Note, Description,FK_CatégorieID, FK_iduser)
+    constructor(SerieID, Title, Note, Description,FK_CatégorieID, FK_iduser, Statut)
     {
         this.SerieID = SerieID;
         this.Title = Title;
@@ -14,6 +15,7 @@ class Serie {
         this.Description = Description;
         this.FK_CatégorieID = FK_CatégorieID;
         this.FK_iduser = FK_iduser;
+        this.Statut = Statut;
     }
     
 };
