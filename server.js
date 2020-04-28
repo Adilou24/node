@@ -22,33 +22,6 @@ app.use(cookieParser())
 app.use(cookieParser());
 
 //************************************************************************************************** */
-// Login
-// app.post('/auth_login', (req, res) => { //post function to authorize user login
-  //   let email = req.body.email,           //declare email/password variable
-  //       password = req.body.password;
-  
-  //   if (email && password) {
-  //     connection.query(
-  //       'SELECT * FROM users.user WHERE email = ? AND password = ?',  //set conn query to mysql
-  //       [email, password],    //insert email and password as data
-  //       (err, results) => {   //function for error throwing and the results
-  //         if (err) throw err;
-  //         if (results.length > 0) {
-  //           console.log(results)
-  //           req.session.userid = results[0].userid;  //set loggedin property as true
-  //           req.session.email = email;    //set email property as email itself
-  //           res.redirect('/mainpage');    //redirect to home
-  //         } else {
-  //           res.json({    //json output with error and error code
-  //             code: 400,
-  //             err: 'Incorrect credentials'
-  //           });
-  //         }
-  //         res.end();
-  //       }
-  //     );
-  //   }
-  // });
 
 //*************************************************************************************************** */
 app.all('/*', function(req, res, next) {
