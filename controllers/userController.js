@@ -1,71 +1,69 @@
 let User = require('../models/userModel');
 let connection = require('../db');
-let userList = [];
 
-// // Add or update one user in the list
-// exports.userNew =  function(request, response) {
-//     let iduser = request.body.iduser
-//     let lastname =  request.body.lastname;
-//     let firstname = request.body.firstname;
-//     if ( iduser == -1)
-//     {
-//         let user = new User(lastname,firstname);
-//         console.log(user);
-//         connection.query("INSERT INTO user set ?", user, function (error, resultSQL) {
-//             if(error) {
-//                 response.status(400).send(error);
-//             }
-//             else{
-//                 response.status(201).redirect('/user');
-//             }
-//         });
-//     }
-//     else if( iduser >=0 )
-//     {
-//         let user = new User(lastname,firstname);
-//         console.log(user);
-//         connection.query("UPDATE user SET ? WHERE iduser = ?", [user, request.body.iduser], function (error, resultSQL) {
-//             if(error) {
-//             response.status(400).send(error);
-//             }
-//             else{
-//                 response.status(202).redirect('/user');
-//             }
-//         });
-//     }
-//     console.log(userList);
-// }
+exports.home = function(req, res) {
+    res.render('userHome.ejs');
+  };
+exports.login = function (req,res){
+    let email = req.body.email,           //declare email/password variable
+    password = req.body.password;
 
-// // Send form to update user
-// exports.userFormAdd = function(request, response) {
-//     response.render('userAdd.ejs', {iduser:'-1', lastname:"", firstname:""});
-// }
+if (email && password) {
+  connection.query(
+    'SELECT * FROM users.user WHERE email = ? AND password = ?',  //set conn query to mysql
+    [email, password],    //insert email and password as data
+    (err, results) => {   //function for error throwing and the results
+      if (err) throw err;
+      if (results.length > 0) {
+        console.log(results)
+        req.session.userid = results[0].userid;  //set loggedin property as true
+        req.session.email = email;    //set email property as email itself
+        res.redirect('/mainpage');    //redirect to home
+      } else {
+        res.json({    //json output with error and error code
+          code: 400,
+          err: 'Incorrect credentials'
+        });
+      }
+      res.end();
+    }
+  );
+}
+};
 
-// // Send user form update
-// exports.userFormUpdate =function (request, response) {
-//     let iduser = request.params.iduser;
-//     connection.query("Select * from user WHERE iduser = ?", iduser ,function (error, resultSQL) {
-//         if (error)  {
-//             response.status(400).send(error);
-//         }
-//         else {
-//             response.status(200);
-//             users = resultSQL;
-//             response.render('userAdd.ejs', {iduser:iduser, lastname:users[0].lastname, firstname:users[0].firstname});
-//         }
-//     });
-// }
+// Send form to update user
+exports.userFormUpdate = function(request, response) {
+    response.render('register.ejs');
+}
+exports.register = function(req, res) {
+    let register_data = {   //set register_data variable to have name, email, and password property
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+      };
+      connection.query('INSERT INTO user SET ?', register_data, (err, results) => {  //set conn query to mysql with err and the results
+        if (err) throw err;
+        else {
+          console.log('Data inserted!', results);  //output to console
+          res.redirect('/userHome');  //redirect to login page
+        }
+      });
+    };
 
-// exports.userRemove = function (request, response) {
-//     let sql = "DELETE FROM `user` WHERE `user`.`iduser` = ?";
-//     connection.query( sql , [request.params.iduser], (error, resultSQL) => {
-//         if(error) {
-//             response.status(400).send(error);
-//         }
-//         else{
-//             response.redirect('/user');
-//         }
-//     }); 
+
+exports.userRemove = function (request, response) {
+    let sql = "DELETE FROM `users`.`user` WHERE userid = ?";
+    connection.query( sql , [request.session.userid], (error, resultSQL) => {
+        if(error) {
+            response.status(400).send(error);
+        }
+        else{
+            response.redirect('/userHome');
+        }
+    }); 
     
-//  };
+ };
+ exports.confirm = function (req,res){
+    res.render('confirm.ejs');
+ }
 

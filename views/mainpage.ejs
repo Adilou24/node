@@ -4,7 +4,16 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-
+<head id = "head"> <ol>
+  <li>
+    <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
+    </form> 
+   </li>
+<li>
+  <form action ="/userHome" method="GET"><button type ="submit">LogOut</button>
+</form>
+</li>
+</ol></head>
 <div class="container">
     <div class="row">
     
@@ -101,9 +110,13 @@
     list-style-type: none;
     display: flex;
     margin: 2px 2px 2px 2px;
-    margin-top: 0px;
-  margin-right: 0px;
-  margin-bottom: 0px;
+}
+ol, li{
+  list-style-type: none;
+    display: flex;
+    margin: 2px 2px 2px 2px;
+    margin-right: 3px;
+
 }
 .create, .create button{
   float: right;

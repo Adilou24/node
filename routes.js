@@ -59,7 +59,10 @@ router.post('/newcat', categorieApiController.addcat);
 
 
 // Route User
-var userController = require('./controllers/userController');
-
-// router.get('/', (request, response) => response.redirect('/user'));
+router.get('/register', userController.userFormUpdate);
+router.post('/auth_register', userController.register);
+router.get ('/userHome', userController.home);
+router.post('/auth_login', userController.login);
+router.post('/userRemove', userController.userRemove);
+router.get('/confirm', userController.confirm)
  module.exports = router;
