@@ -36,12 +36,12 @@ exports.userFormUpdate = function(request, response) {
     response.render('register.ejs');
 }
 exports.register = function(req, res) {
-    let register_data = {   //set register_data variable to have name, email, and password property
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-      };
-      connection.query('INSERT INTO user SET ?', register_data, (err, results) => {  //set conn query to mysql with err and the results
+       let userid = req.body.userid;
+       let name= req.body.name;
+       let email= req.body.email;
+       let password= req.body.password;
+       let user = new User (userid, name, email, password);
+      connection.query('INSERT INTO user SET ?', user, (err, results) => {  //set conn query to mysql with err and the results
         if (err) throw err;
         else {
           console.log('Data inserted!', results);  //output to console
