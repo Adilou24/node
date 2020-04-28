@@ -5,7 +5,16 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-
+<head id = "head"> <ol>
+  <li>
+    <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
+    </form> 
+   </li>
+<li>
+  <form action ="/userHome" method="GET"><button type ="submit">LogOut</button>
+</form>
+</li>
+</ol></head>
 <div class="container">
     <div class="row">
     
@@ -73,6 +82,13 @@
 }
 button{
   margin-left: 70px;
+}
+ol, li{
+  list-style-type: none;
+    display: flex;
+    margin: 2px 2px 2px 2px;
+    margin-right: 3px;
+
 }
 
 .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
