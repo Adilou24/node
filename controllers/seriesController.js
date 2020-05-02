@@ -19,20 +19,20 @@ exports.mainpage = function (req,res){
 }
 exports.Search = function (req,res){
     let champ = req.query.Search;
-    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where Title = ?;", champ, function (error, resultSQL) {
+    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where Title = ? ",champ, function (error, resultSQL) {
     serieList =  resultSQL;
     console.log(resultSQL)
     res.render('mainpage.ejs', {series:serieList});
     });
 }
 exports.encours = function (req,res){
-    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.Statut = 'En cours';", function (error, resultSQL) {
+    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.Statut = 'En cours' AND ser.FK_iduser = ? ;",req.session.userid, function (error, resultSQL) {
     serieList =  resultSQL;
     res.render('mainpage.ejs', {series:serieList});
     });
 }
 exports.Finis = function (req,res){
-    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.Statut = 'Série Fini';", function (error, resultSQL) {
+    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.Statut = 'Série Fini'  AND ser.FK_iduser = ?;",req.session.userid, function (error, resultSQL) {
     serieList =  resultSQL;
     res.render('mainpage.ejs', {series:serieList});
     });

@@ -32,7 +32,7 @@ if (email && password) {
 };
 
 // Send form to update user
-exports.userFormUpdate = function(request, response) {
+exports.userFormadd = function(request, response) {
     response.render('register.ejs');
 }
 exports.register = function(req, res) {
@@ -66,4 +66,32 @@ exports.userRemove = function (request, response) {
  exports.confirm = function (req,res){
     res.render('confirm.ejs');
  }
+ exports.updateUser = function (req,res){
+  let userid = req.body.userid;
+  let name = req.body.name;
+  let email = req.body.email;
+  let password = req.body.password;
+  let user = new User(userid, name, email, password);
+      console.log(user);
 
+      connection.query("UPDATE `users`.`user` SET ? WHERE userid = ?", [user, req.session.userid] , function (error, resultSQL) {
+          if(error) {
+              res.status(400).send(error);
+          }
+          else{
+              res.status(201).redirect('/mainpage');
+          }
+      });
+  }
+  exports.UpdateFormUser = function (req,res){
+    connection.query("SELECT * FROM `users`.`user` where userid = ?", req.session.userid ,function (error, resultSQL) {
+        if (error)  {
+            res.status(400).send(error);
+        }
+        else {
+            res.status(200);
+            user = resultSQL;
+            res.render('updateuser.ejs', {userid:user[0].userid, name:user[0].name, email:user[0].email, password:user[0].password});
+        }
+    });
+  }

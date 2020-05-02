@@ -3,7 +3,7 @@ let catListe = [];
 let Categorie = require('../models/categoriesModel')
 
 exports.listeCat1 = function (req,res){
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 1;", function (error, resultSQL) { 
+    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.FK_iduser = ?;", function (error, resultSQL) { 
         if (error)  {
             response.status(400).json({'message' : error});       
         }
@@ -17,69 +17,19 @@ exports.listeCat1 = function (req,res){
     });
 
 }
-
-exports.listeCat2 = function (req,res){
-     
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 2", function (error, resultSQL) { 
-        if (error)  {
-            response.status(400).json({'message' : error});       
-        }
-        else {
-            res.status(200);
-            catListe =  resultSQL;
-
-            console.log(catListe);
-            res.json({catégorie:catListe});
-        }
-    });
-
-}
-exports.listeCat3 = function (req,res){
-     
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 3;", function (error, resultSQL) { 
-        if (error)  {
-            response.status(400).json({'message' : error});       
-        }
-        else {
-            res.status(200);
-            catListe =  resultSQL;
-
-            console.log(catListe);
-            res.json({catégorie:catListe});
-        }
-    });
-
-}
-exports.listeCat4 = function (req,res){
-     
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 4;", function (error, resultSQL) { 
-        if (error)  {
-            response.status(400).json({'message' : error});       
-        }
-        else {
-            res.status(200);
-            catListe =  resultSQL;
-
-            console.log(catListe);
-            res.json({catégorie:catListe});
-        }
-    });
-
-}
-exports.listeCat5 = function (req,res){
-     
-    connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where FK_CatégorieID = 5;", function (error, resultSQL) { 
-        if (error)  {
-            response.status(400).json({'message' : error});       
-        }
-        else {
-            res.status(200);
-            catListe =  resultSQL;
-            console.log(catListe);
-            res.json({catégorie:catListe});
-        }
-    });
-
+exports.catbtn = function (req,res){
+    let catbtn = req.params.CatName;
+   connection.query("SELECT ser.Title as nom, FK_iduser, ser.Description as synopsis, cat.CatName as category, ser.Statut as statut FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID  where cat.CatName = ? AND ser.FK_iduser = ?;",[catbtn,req.session.userid], function (error, resultSQL) { 
+       if (error)  {
+           res.status(400).send(error);        
+       }
+       else {
+           res.status(200);
+           catListe =  resultSQL;
+           console.log(catListe);
+           res.render('categorie1.ejs', {catégorie:catListe});
+       }
+   });
 }
 
 exports.addcat =  function(req, res) {

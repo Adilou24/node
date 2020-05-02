@@ -42,27 +42,26 @@ router.delete('/Api/deleteserie/:SerieID', seriesApiController.serieRemove);
 
 // Route CATEGORIE
 router.get('/categorie1', categorieController.listeCat1);
-router.get('/categorie2', categorieController.listeCat2);
-router.get('/categorie3', categorieController.listeCat3);
-router.get('/categorie4', categorieController.listeCat4);
-router.get('/categorie5', categorieController.listeCat5);
 router.get('/addcategorie', categorieController.catFormAdd);
+router.get('/categoriebtn/:CatName', categorieController.catbtn);
 router.post('/newcat', categorieController.addcat);
 
 // Route API CATEGORIE
 router.get('/Api/categorie1', categorieApiController.listeCat1);
-router.get('/Api/categorie2', categorieApiController.listeCat2);
-router.get('/Api/categorie3', categorieApiController.listeCat3);
-router.get('/Api/categorie4', categorieApiController.listeCat4);
-router.get('/Api/categorie5', categorieApiController.listeCat5);
+router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
 router.post('/newcat', categorieApiController.addcat);
 
 
 // Route User
-router.get('/register', userController.userFormUpdate);
+router.get('/register', userController.userFormadd);
 router.post('/auth_register', userController.register);
 router.get ('/userHome', userController.home);
 router.post('/auth_login', userController.login);
 router.post('/userRemove', userController.userRemove);
-router.get('/confirm', userController.confirm)
+router.get('/confirm', userController.confirm);
+router.get('/userFormUpdate', userController.UpdateFormUser);
+router.post('/userUpdate/:userid', userController.updateUser);
+
+
+
  module.exports = router;

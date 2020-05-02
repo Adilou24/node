@@ -13,10 +13,13 @@
   <form action ="/userHome" method="GET"><button type ="submit">LogOut</button>
 </form>
 </li>
-</ol></head>
+</ol>
+</head>
 <div class="container">
     <div class="row">
-    
+      <form class="modif" action = "/userFormUpdate" method="GET">
+        <button type="submit" ><em>Modifier profil</em></button>
+        </form>
     <p></p>
     <h1>Liste des séries</h1>
         <div class="col-md-10 col-md-offset-1">
@@ -203,5 +206,9 @@ h1 {
     padding: 0;
     border-radius: 5px;
     float:left;
+}
+.modif{
+  text-align: right;
+  margin-top:0;
 }
 </style>

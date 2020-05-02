@@ -1,0 +1,15 @@
+<h1>Modifier votre profil</h1>
+<form action="/userUpdate/<%= userid %>" method="POST">
+    <input type ="hidden" name ="userid" value = "<%= userid %>" >
+    Nom : 
+    <input type="text" name="name" value="<%= name %>" ><br>
+    email:
+    <input type="email" name="email"  value = "<%= email %>"><br>
+    Password : 
+    <input type="password" name="password" value="<%= password %>"><br>
+    </table>
+    <input type="submit" name="save" value="Sauver"><br>
+</form>
+<form action="/mainpage" method="get">
+    <button type="submit"> Retour à la liste </button>
+ </form>
