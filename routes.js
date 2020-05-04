@@ -49,7 +49,8 @@ router.post('/newcat', categorieController.addcat);
 // Route API CATEGORIE
 router.get('/Api/categorie1', categorieApiController.listeCat1);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
-router.post('/newcat', categorieApiController.addcat);
+router.post('/Api/newcat', categorieApiController.addcat);
+router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
 
 
 // Route User
