@@ -38,10 +38,10 @@ exports.Finis = function (req,res){
     });
 }
 exports.serieFormAdd = function(req, res) {
-    res.render('serieAdd.ejs', {Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :""});
+    res.render('serieAdd.ejs', {SerieID:"",Title:"", Note:"", Description:"",FK_CatégorieID:"", CatName :""});
 }
 exports.addserie =  function(req, res) {
-    let SerieID = req.body.SerieID;
+    let SerieID = req.query.SerieID;
     let Title =  req.body.Title;
     let Note = req.body.Note;
     let Description = req.body.Description;
@@ -63,7 +63,7 @@ exports.addserie =  function(req, res) {
 
  exports.updateseries =  function(req, res) {
     let SerieID = req.body.SerieID;
-    let Title =  req.body.Title;
+    let Title =  req.body.Title; // Quand c'est toi qui écrit 
     let Note = req.body.Note;
     let Description = req.body.Description;
     let FK_CatégorieID = req.body.FK_CatégorieID;
@@ -83,7 +83,7 @@ exports.addserie =  function(req, res) {
     }
 // Send user form update
 exports.serieFormUpdate = function (request, response) {
-    let SerieID = request.params.SerieID;
+    let SerieID = request.params.SerieID; // params = barre de recherche
     connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, ser.FK_CatégorieID, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID where ser.SerieID = ?", SerieID ,function (error, resultSQL) {
         if (error)  {
             response.status(400).send(error);
