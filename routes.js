@@ -45,7 +45,7 @@ router.get('/categorie1', categorieController.listeCat1);
 router.get('/addcategorie', categorieController.catFormAdd);
 router.get('/categoriebtn/:CatName', categorieController.catbtn);
 router.post('/newcat', categorieController.addcat);
-
+router.get('/categoriename', categorieController.categoriename);
 // Route API CATEGORIE
 router.get('/Api/categorie1', categorieApiController.listeCat1);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);

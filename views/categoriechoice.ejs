@@ -19,7 +19,7 @@
     <div class="row">
     
     <p></p>
-    <h1>Liste des séries par catégorie</h1>
+    <h1>Choisir une catégorie</h1>
         <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
@@ -29,40 +29,23 @@
                     <form action = "/mainpage" method="GET">
                       <button type="submit" class="btn btn-sm btn-primary btn-create">Série</button>
                       </form>
-                      <form action = "/categoriename" method="GET">
-                        <button type="submit" class="btn btn-sm btn-primary btn-create">Catégorie</button></form>
+                      <div class="cat">
+                        <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
+                      <form action = "/categoriebtn/<%= catégorie[i].category %>" method="GET">
+                        <button type="submit" class="btn btn-sm btn-primary btn-create"><%= catégorie[i].category %></button></form>
+                        <% } %>
+                      </div>
+    
                   </div>
                 
                   <div class="create">
                     <form action = "/addcategorie" method="GET">
                     <button type="submit" class="btn btn-sm btn-primary btn-create">Create New Catégorie</button>
-                    <p>Pour que la catégorie s'affiche, il faut lui mettre une série dedans, une catégorie vide de s'affiche pas</p>
+                    <p>Veuillez selectionner une catégorie pour afficher la liste des séries qui sont dans votre base de données</p>
                     </form>
                   </div>
                 </div>
-              </div>
-            <div class="container">
-              <div class="row">
-                <div class="span5">
-                        <table class="table table-striped table-condensed">
-                              <thead>
-                                      
-                              <tr>
-                                  <th>Catégorie</th>
-                                  <th>Titre</th>
-                                  <th>Status</th>  
-                                  <% for (let i = 0 ;  i < catégorie.length ; i++) { %>                                         
-                              </tr>
-  
-                              <tr>
-                                <td><%= catégorie[i].category %></td>
-                                <td><%= catégorie[i].nom %> </td>
-                                <td><span class="label label-success"> <%= catégorie[i].statut %></span>
-                                </tr>
-                                <% } %>
-                        </table>
-                        </div>
-              </div>
+                <img src="https://www.cjoint.com/doc/20_05/JEhuuvTO0PV_Image1.png" type="image" alt="Selectionner une catégorie">
             </div>
             </div>
 

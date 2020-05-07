@@ -1,9 +1,9 @@
 <h1>Ajouter une Catégorie</h1>
 <form action="/newcat" method="POST">
     Catégorie ID: 
-    <input type="number" min="6" max="10" name= "CatégorieID"  value = "<%= CatégorieID %>"><br>
+    <input type="number" min="6" max="10" name= "CatégorieID"  value = "<%= CatégorieID %>"><br></br>
     Nom de la Catégorie:
-    <input type="text" name="CatName" value="<%= CatName %>"><br>
+    <input type="text" name="CatName" value="<%= CatName %>"><br></br>
     <table>
         <tr>
             <th>1</th>
@@ -18,8 +18,60 @@
             <td>Drama</td>
         </tr>
     </table>
-    <input type="submit" name="save" value="Sauver"><br>
+    <input class="save" type="submit" name="save" value="Sauver"><br>
 </form>
-<form action="/categorie" method="get">
-    <button type="submit"> Retour à la liste </button>
+<form action="/categoriename" method="get">
+    <button class="Back" type="submit"> Retour à la liste </button>
  </form>
+
+ <style>
+ 
+    body{
+        background-color:honeydew;
+        width: 150%;
+        margin-left: 50px;
+    }
+ 
+    form{
+        background-color: #E0E0E0;
+        width:25%;
+        text-align:justificy;
+        border-width: 2px;
+        border-style: groove;
+        border-image: initial;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-left: 6px;
+    }
+ 
+    input{
+        border-radius: 2px 2px 2px;
+    }
+ 
+    h1{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: black;
+        width:25%;
+        text-align:center;
+        border-radius: 50px;
+        color: white;
+    }
+ 
+    .save{
+        border-radius: 12px;
+        background-color: black;
+        border: white;
+        color: white;
+        font-family: Georgia;
+        font-size: 18px;
+    }
+ 
+    .Back{
+        border-radius: 12px;
+        background-color: green;
+        border: white;
+        color: white;
+        font-family: Georgia;
+        font-size: 18px;
+    }
+ 
+</style>

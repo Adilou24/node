@@ -14,7 +14,7 @@
 <body>
     <div class="ui middle aligned center aligned grid">
         <div class="column ui stacked segment">
-            <h1 class="ui header">Register</h1>
+            <h2 class="ui header">Register</h2>
 
             <form class="ui medium form" method="POST" action="auth_register">
                 <label class="ui teal header">
@@ -34,10 +34,65 @@
                 </label>
                 <input type="password" name="password" placeholder="Your password" required />
                 <br /><br /><br />
-                <input class="ui fluid large green submit button" type="submit" value="Login" />
+                <input class="save" type="submit" value="Login" />
             </form>
         </div>
     </div>
 </body>
 
 </html>
+
+<style>
+ 
+    body{
+        background-color:honeydew;
+        width: 150%;
+        margin-left: 50px;
+    }
+ 
+    form{
+        background-color: #E0E0E0;
+        width:20%;
+        text-align:justificy;
+        border-width: 2px;
+        border-style: groove;
+        border-image: initial;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding-left: 6px;
+        text-align: center;
+    }
+ 
+    input{
+        border-radius: 2px 2px 2px;
+    }
+ 
+    h2{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: black;
+        width:30%;
+        text-align:center;
+        border-radius: 50px;
+        color: white;
+    }
+ 
+    .save{
+        border-radius: 12px;
+        background-color: black;
+        border: white;
+        color: white;
+        font-family: Georgia;
+        font-size: 18px;
+        text-align: center;
+        width: 100px;
+    }
+ 
+    .Back{
+        border-radius: 12px;
+        background-color: green;
+        border: white;
+        color: white;
+        font-family: Georgia;
+        font-size: 18px;
+    }
+ 
+</style>
