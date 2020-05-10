@@ -1,7 +1,6 @@
 <h1>Ajouter une Catégorie</h1>
 <form action="/newcat" method="POST">
-    Catégorie ID: 
-    <input type="number" min="6" max="10" name= "CatégorieID"  value = "<%= CatégorieID %>"><br></br>
+    <input type="hidden" name= "CatégorieID"  value = "<%= CatégorieID %>">
     Nom de la Catégorie:
     <input type="text" name="CatName" value="<%= CatName %>"><br></br>
     <table>

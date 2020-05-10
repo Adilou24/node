@@ -48,7 +48,7 @@ exports.catFormAdd = function(req, res) {
     res.render('catAdd.ejs', {CatégorieID : "", CatName : "" });
 }
 exports.addcat =  function(req, res) {
-    let CatégorieID =  req.body.CatégorieID;
+    let CatégorieID =  req.query.CatégorieID;
     let CatName = req.body.CatName;
     let categ = new Categorie (CatégorieID, CatName);
         console.log(categ);
