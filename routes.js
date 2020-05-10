@@ -51,6 +51,7 @@ router.get('/Api/categorie1', categorieApiController.listeCat1);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
 router.post('/Api/newcat', categorieApiController.addcat);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
+router.get('/Api/categoriename', categorieApiController.categoriename);
 
 
 // Route User

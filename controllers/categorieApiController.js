@@ -31,6 +31,19 @@ exports.catbtn = function (req,res){
        }
    });
 }
+exports.categoriename = function (req,res){
+    connection.query("SELECT CatName as category FROM users.catégorie ;", function (error, resultSQL) { 
+        if (error)  {
+            res.status(400).json({'message' : error});         
+        }
+        else {
+            res.status(200);
+            catListe =  resultSQL;
+            console.log(catListe);
+            res.json({catégorie:catListe});
+        }
+    });
+ }
 
 exports.addcat =  function(req, res) {
     let CatégorieID =  req.body.CatégorieID;
