@@ -7,7 +7,7 @@ var seriesController = require('./controllers/seriesController');
 var seriesApiController = require('./controllers/seriesApiController');
 var categorieController = require('./controllers/categorieController');
 var categorieApiController = require('./controllers/categorieApiController')
-
+var userApiController = require('./controllers/userApiController')
 const check = (req, res, next) => {
     if(req.session && req.session.userid >= 0){
         next();
@@ -46,6 +46,9 @@ router.get('/addcategorie', categorieController.catFormAdd);
 router.get('/categoriebtn/:CatName', categorieController.catbtn);
 router.post('/newcat', categorieController.addcat);
 router.get('/categoriename', categorieController.categoriename);
+router.get('/updatecatform/:CatégorieID', categorieController.catFormUpdate);
+router.post ('/updatecat', categorieController.updatecat);
+
 // Route API CATEGORIE
 router.get('/Api/categorie1', categorieApiController.listeCat1);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
@@ -64,6 +67,9 @@ router.get('/confirm', userController.confirm);
 router.get('/userFormUpdate', userController.UpdateFormUser);
 router.post('/userUpdate/:userid', userController.updateUser);
 
-
+// Route API User
+router.get('/Api/user', userApiController.userList);
+// router.post('/api/user/:iduser', userApiController.register);
+// router.delete('/api/user/:iduser', userApiController.userRemove);
 
  module.exports = router;

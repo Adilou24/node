@@ -33,6 +33,9 @@
                         <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
                       <form action = "/categoriebtn/<%= catégorie[i].category %>" method="GET">
                         <button type="submit" class="btn btn-sm btn-primary btn-create"><%= catégorie[i].category %></button></form>
+                        <form action = "/updatecatform/<%= catégorie[i].CatégorieID %>" method="GET">
+                          <button type="submit" ><em class="fa fa-pencil"></em></button>
+                          </form>
                         <% } %>
                       </div>
     
