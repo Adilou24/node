@@ -55,6 +55,7 @@ router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
 router.post('/Api/newcat', categorieApiController.addcat);
 router.get('/Api/categoriebtn/:CatName', categorieApiController.catbtn);
 router.get('/Api/categoriename', categorieApiController.categoriename);
+router.put('/Api/updatecat/:CatégorieID', categorieApiController.updatecat);
 
 
 // Route User
@@ -69,7 +70,7 @@ router.post('/userUpdate/:userid', userController.updateUser);
 
 // Route API User
 router.get('/Api/user', userApiController.userList);
-// router.post('/api/user/:iduser', userApiController.register);
-// router.delete('/api/user/:iduser', userApiController.userRemove);
+router.post('/api/user/:iduser', userApiController.register);
+router.delete('/api/user/:iduser', userApiController.userRemove);
 
  module.exports = router;

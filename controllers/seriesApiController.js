@@ -5,7 +5,7 @@ let Serie = require('../models/seriesModel')
 
 exports.mainpage = function (req,res){
      console.log(req.session)
-    connection.query("SELECT ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID ", function (error, resultSQL) {
+    connection.query("SELECT ser.FK_CatégorieID, ser.SerieID, FK_iduser, ser.Title , ser.Description , ser.Note , ser.Statut, cat.CatName FROM users.series ser inner join users.catégorie cat on ser.FK_catégorieID = cat.CatégorieID ", function (error, resultSQL) {
         if (error)  {
             res.status(400).json({'message' : error});        
         }

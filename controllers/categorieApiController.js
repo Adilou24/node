@@ -32,7 +32,7 @@ exports.catbtn = function (req,res){
    });
 }
 exports.categoriename = function (req,res){
-    connection.query("SELECT CatName as category FROM users.catégorie ;", function (error, resultSQL) { 
+    connection.query("SELECT CatégorieID, CatName as category FROM users.catégorie ;", function (error, resultSQL) { 
         if (error)  {
             res.status(400).json({'message' : error});         
         }
@@ -61,5 +61,21 @@ exports.addcat =  function(req, res) {
              
             }
         });
+    }
+
+    exports.updatecat =  function(req, res) {
+        let CatégorieID =  req.body.CatégorieID;
+        let CatName = req.body.CatName;
+        let categ = new Categorie (CatégorieID, CatName);
+                console.log(categ);
+        
+                connection.query("UPDATE users.catégorie SET ? WHERE CatégorieID= ?", [categ, CatégorieID] , function (error, resultSQL) {
+                    if(error) {
+                        res.status(400).json({'message' : error });
+                    }
+                    else{
+                        res.status(201).json({'message' : 'success'});
+                    }
+                });
     }
     
