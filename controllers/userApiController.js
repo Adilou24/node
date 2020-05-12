@@ -35,11 +35,28 @@ exports.userRemove = function (request, response) {
     let sql = "DELETE FROM `users`.`user` WHERE userid = ?";
     connection.query( sql , [request.session.userid], (error, resultSQL) => {
         if(error) {
-            response.status(400).send(error);
+            response.status(400).json({'message' : error});
         }
         else{
-            response.redirect('/userHome');
+            response.json({'message' : 'success'});   
         }
     }); 
     
  };
+ exports.updateUser = function (req,res){
+    let userid = req.body.userid;
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    let user = new User(userid, name, email, password);
+        console.log(user);
+  
+        connection.query("UPDATE `users`.`user` SET ? WHERE userid = ?", [user, req.session.userid] , function (error, resultSQL) {
+            if(error) {
+                res.status(400).json({'message' : error});
+            }
+            else{
+                res.status(200).json({'message' : 'success'});   
+            }
+        });
+    }

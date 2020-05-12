@@ -55,7 +55,7 @@ exports.addcat =  function(req, res) {
                 res.status(400).json({'message' : error}); 
             }
             else{
-                res.status(201).json({'message' : 'success'});    
+                res.status(200).json({'message' : 'success'});    
                
 
              

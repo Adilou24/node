@@ -1,3 +1,4 @@
+<html lang="en">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -5,6 +6,8 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- empeche dézoom -->
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <head id = "head"> <ol>
   <li>
     <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
@@ -59,9 +62,6 @@
                                 <td><%= catégorie[i].category %></td>
                                 <td><%= catégorie[i].nom %> </td>
                                 <td><span class="label label-success"> <%= catégorie[i].statut %></span></td>
-                                <td><form action = "/updatecatform/<%= catégorie[i].CatégorieID %>" method="GET">
-                                  <button type="submit" ><em class="fa fa-pencil"></em></button>
-                                  </form></td>
                                 </tr>
                                 <% } %>
                         </table>
@@ -71,6 +71,7 @@
             </div>
 
 </div></div></div>
+</html>
 <style>
   .cat, .cat button{
     list-style-type: none;
@@ -155,11 +156,7 @@ h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3em;
 }
+@media (max-width:900px) {
 
+}
 </style>
-                        <!-- <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
-                            <tr>
-                                 
-                                 <td><%= catégorie[i].CatName %> </td>
-                             <td><%= catégorie[i].Title %> </td>
-                            <% } %> </tr> -->

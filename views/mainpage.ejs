@@ -1,6 +1,9 @@
+<html lang="en">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- empeche dézoom -->
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -98,7 +101,55 @@
             </div>
 
 </div></div></div>
+<footer>
+  <h2> Retrouvez plus d'infos sur : </h2>
+   <div class="socialMedia" >
+   <button>
+   <a href ="https://dem-group.com/" target="_blank"> 
+     <img class = "buttonDem" src= "logo_dem.png" alt ="site de dem group" aria-hidden = "True"> </a>
+     <span class ="accessible-hidden"> <em lang ="en"> Website </em> </span>
+   </button>
+   <button>
+   <a href ="https://www.linkedin.com/company/dem-group/" target="_blank"> 
+     <img class = "LinkedInDem" src= "in.png" alt ="LinkdeIn de DEM" aria-hidden = "True"> </a>
+     <span class ="accessible-hidden"> <em lang ="en"> LinkdeIn </em> </span>
+   </button> </div>
+</footer>
+<button><div id="scroll_to_top"> 
+<a href="#banniere_image"><img src="arrow.png" alt="Retourner en haut" /></a> 
+<span class ="accessible-hidden"> <em lang ="en"> Menu </em> </span>
+</div>
+</button>
+</html>
 <style>
+:root {
+
+--base-color-h: 352;
+  --base-color-s: 94%;
+  --base-color-l: 37%;
+  --base-color: hsl(var(--base-color-h),
+                    var(--base-color-s),
+                    var(--base-color-l));
+  --base-color-darken-5: hsl(var(--base-color-h),
+                              var(--base-color-s),
+                              calc(var(--base-color-l) - 5%));
+  --length-M: 1rem;
+  --length-L: calc(var(--length-M) * 2);
+  --length-S: calc(var(--length-M) / 2);
+  --mdc-theme-primary : #D2693D;
+  --mdc-theme-on-primary :#fff;
+}
+/* .row{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 1em;
+}
+@media (max-width: 800px){
+    .row{
+        grid-template-columns: 0.5fr 0.5fr 0.5fr;
+    }
+} */
     .panel-table .panel-body{
   padding:0;
   
@@ -183,7 +234,7 @@ h1 {
     font-size: 3em;
 }
 #searchbar{
-    position:relative;
+    position:relative;  /*décale par rapport a la position normal */
     width:1040px;
     height:auto;
     display:inline-block;
@@ -191,7 +242,6 @@ h1 {
 }
 #searchbar .text{
     width:200px;
-    float:left; 
     margin-top: 0px;   
 }
 #searchbar .champ{
@@ -211,4 +261,47 @@ h1 {
   text-align: right;
   margin-top:0;
 }
+button:hover span.accessible-hidden {
+    left: 50%;
+    margin-left: -50%;
+    top: -2.5em;
+    display: block;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    font-size: 0.6em;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+.buttonDem {
+    width: 50px;
+    height: 25px;
+
+}
+.LinkedInDem{
+    width: 25px;
+    height: 25px;
+}
+span.accessible-hidden {
+    position: absolute;
+    left: -10000px;
+}
+#scroll_to_top { 
+  position: fixed; 
+  width: 25px; 
+  height: 25px; 
+  bottom: 50px; 
+  right: 30px; 
+} 
+#scroll_to_top img { 
+  width: 50px; 
+}
+.socialMedia{
+       display: inline-flex;
+    align-self: flex-end;
+    justify-content: justify;
+    align-content: center;
+    text-align: center;
+
+}
+
 </style>

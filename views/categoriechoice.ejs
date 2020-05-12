@@ -5,6 +5,8 @@
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- empeche dézoom -->
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <head id = "head"> <ol>
   <li>
     <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
@@ -29,15 +31,12 @@
                     <form action = "/mainpage" method="GET">
                       <button type="submit" class="btn btn-sm btn-primary btn-create">Série</button>
                       </form>
-                      <div class="cat">
+        
                         <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
                       <form action = "/categoriebtn/<%= catégorie[i].category %>" method="GET">
                         <button type="submit" class="btn btn-sm btn-primary btn-create"><%= catégorie[i].category %></button></form>
-                        <form action = "/updatecatform/<%= catégorie[i].CatégorieID %>" method="GET">
-                          <button type="submit" ><em class="fa fa-pencil"></em></button>
-                          </form>
                         <% } %>
-                      </div>
+              
     
                   </div>
                 
@@ -137,11 +136,9 @@ h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3em;
 }
+@media (max-width:800px) {
+
+}
 
 </style>
-                        <!-- <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
-                            <tr>
-                                 
-                                 <td><%= catégorie[i].CatName %> </td>
-                             <td><%= catégorie[i].Title %> </td>
-                            <% } %> </tr> -->
+            

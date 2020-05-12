@@ -70,7 +70,7 @@ router.post('/userUpdate/:userid', userController.updateUser);
 
 // Route API User
 router.get('/Api/user', userApiController.userList);
-router.post('/api/user/:iduser', userApiController.register);
-router.delete('/api/user/:iduser', userApiController.userRemove);
-
+router.post('/Api/user/:iduser', userApiController.register);
+router.delete('/Api/user/:iduser', userApiController.userRemove);
+router.put('/Api/userUpdate/:userid', userApiController.updateUser);
  module.exports = router;
