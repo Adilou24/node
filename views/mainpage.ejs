@@ -1,89 +1,87 @@
-<html lang="en">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- empeche dézoom -->
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<!------ Include the above in your HEAD tag ---------->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-<head id = "head"> <ol>
-  <li>
-    <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
-    </form> 
-   </li>
-<li>
-  <form action ="/userHome" method="GET"><button type ="submit">LogOut</button>
-</form>
-</li>
-</ol>
+	gtag('config', 'GA_TRACKING_ID');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="description de DEM GROUP">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" />
+    <title>SERIVORE</title>
+    <head id = "head"> 
+      <ol>
+      <li>
+        <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
+        </form> 
+       </li>
+    <li>
+      <form action ="/userHome" method="GET"><button type ="submit">LogOut</button>
+    </form>
+    </li>
+  </ol>
+      
+  <form class="modif" action = "/userFormUpdate" method="GET">
+    <button type="submit" ><em>Modifier profil</em></button>
+    </form>
+    </head>
 </head>
-<div class="container">
-    <div class="row">
-      <form class="modif" action = "/userFormUpdate" method="GET">
-        <button type="submit" ><em>Modifier profil</em></button>
-        </form>
-    <p></p>
-    <h1>Liste des séries</h1>
-        <div class="col-md-10 col-md-offset-1">
-
-          <div class="panel panel-default panel-table">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="recherche">
-                  <form action = "/mainpage" method="GET">
-                    <button type="submit" class="btn btn-sm btn-primary btn-create">Série</button>
+ <body>
+            <header>
+              <titl>Serivore!</titl>
+            </header>
+            
+            <div id="banniere_image" role="bannière">
+                
+            </div>
+            <nav>
+                    <ul>
+                        <li><a href="/mainpage">Serie</a></li>
+                          <li><a href="/categoriename">Catégorie</a></li>
+                    </ul>
+                </nav>
+                <section id = "bloc1" role="about séries" >
+                   <h1>Liste des séries</h1>
+                    <form action="/Search" method = "get">
+                        <input class="champ" type="search" name = "Search"  placeholder="Search..."/>
+                        <input class="bouton" type="submit" value="Entrer" />
                     </form>
-                    <form action = "/categoriename" method="GET">
-                      <button type="submit" class="btn btn-sm btn-primary btn-create">Catégorie</button></form>
-                </div>
-                <div class="create">
-                  <form action = "/addserie" method="GET">
-                  <button type="submit" class="btn btn-sm btn-primary btn-create">Create New Serie</button>
-                  </form>
-                </div>
-              </div>
-            </div>
- 
-              <div id="searchbar">
-                <form action="/Search" method = "get">
-                    <input class="champ" type="search" name = "Search"  placeholder="Search..."/>
-                    <input class="bouton" type="submit" value="Entrer" />
-                </form>
-
-            </div>
-              <div class="panel-body">
-                <table class="table table-striped table-bordered table-list">
+                    <div class="create">
+                    <a href= "/addserie"><img src="https://www.cjoint.com/doc/20_05/JEmsu2lX8XV_plus.png" alt="ajouter serie">Create New Serie</a>
+                    </div>
+                   <table class="table">
                     <tr>
-                        <th><em class="fa fa-cog"></em></th>
+                        <th><em class="entete"></em></th>
                         <th>Nom Série</th>
                         <th>Description</th>
                         <th>Note</th>
                         <th>Statut
                           <form action = "/EnCours" method="GET">
-                            <button type="submit" class="btn btn-sm btn-primary btn-create">En cours</button>
+                            <button type="submit">En cours</button>
                             </form>
                             <form action = "/Finis" method="GET">
-                              <button type="submit" class="btn btn-sm btn-primary btn-create">Séries Fini</button>
+                              <button type="submit">Séries Fini</button>
                               </form>
-
 
                         </th>
                     </tr> 
                         <% for (let i = 0 ;  i < series.length ; i++) { %>
                           
                         <tr>
-                            <td align ="center">
-                              <!-- <form action= "/updateformserie/<%= series[i].SerieID %>" method="GET">
-                                <a class="btn btn-default"><em class="fa fa-pencil" type="submit" href = "/updateformserie/<%= series[i].SerieID %>" method="GET" > </em></a>
-                              </form> -->
-                                <form action = "/updateformserie/<%= series[i].SerieID %>" method="GET">
-                                  <button type="submit" ><em class="fa fa-pencil"></em></button>
-                                  </form>
-                                  <form action = "/deleteformserie/<%= series[i].SerieID %>" method="GET">
-                                    <button type="submit" ><em class="fa fa-trash"></em></button>
-                                    </form>
-                                <!-- <a class="btn btn-danger"><em class="fa fa-trash"></em></a>  -->
+                            <td>
+                              <div class="pencil">
+                                <a href= "/updateformserie/<%= series[i].SerieID %>">
+                                  <img src="https://www.cjoint.com/doc/20_05/JEmr1SjAP4V_Image1.png"  alt="modifier série"></a></div>
+                                <div class="trash">
+                                  <a href= "/deleteformserie/<%= series[i].SerieID %>">
+                                  <img src="https://www.cjoint.com/doc/20_05/JEmr3acLTgV_kisspng-button-computer-icons-.png" alt="supprimer serie"></a></div>                            
                              </td> 
                          <td><%= series[i].Title %></td>
                          <td><%= series[i].Description %></td>
@@ -91,38 +89,32 @@
                         <td><%= series[i].Statut %></td>
                         </tr>
                         <% } %>
-                </table>
-            
-              </div>
-              <div class="panel-footer">
-                <div class="row">
-                </div>
-              </div>
-            </div>
+                   </table>
 
-</div></div></div>
+                </section>
+ <button><div id="scroll_to_top"> 
+    <a href="#banniere_image"><img src="https://www.cjoint.com/doc/20_05/JEmseQchvoV_arrow.png" alt="Retourner en haut" /></a> 
+    <span class ="accessible-hidden"> <em lang ="en">Menu</em> </span>
+</div>
+</button>
 <footer>
-  <h2> Retrouvez plus d'infos sur : </h2>
+  <h2> Suivez moi sur : </h2>
    <div class="socialMedia" >
    <button>
-   <a href ="https://dem-group.com/" target="_blank"> 
-     <img class = "buttonDem" src= "logo_dem.png" alt ="site de dem group" aria-hidden = "True"> </a>
-     <span class ="accessible-hidden"> <em lang ="en"> Website </em> </span>
+   <a href ="https://www.facebook.com/gintoki.mbalambala" target="_blank"> 
+     <img class = "buttonAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyfFCMuV_fcb.png" alt ="facebook de adil" aria-hidden = "True"> </a>
+     <span class ="accessible-hidden"> <em lang ="en"> Facebook </em> </span>
    </button>
    <button>
-   <a href ="https://www.linkedin.com/company/dem-group/" target="_blank"> 
-     <img class = "LinkedInDem" src= "in.png" alt ="LinkdeIn de DEM" aria-hidden = "True"> </a>
+   <a href ="https://www.instagram.com/adil_bmd/?hl=fr" target="_blank"> 
+     <img class = "InstaAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyNIjKPV_insta.png" alt ="Instagram de Adil" aria-hidden = "True"> </a>
      <span class ="accessible-hidden"> <em lang ="en"> LinkdeIn </em> </span>
    </button> </div>
 </footer>
-<button><div id="scroll_to_top"> 
-<a href="#banniere_image"><img src="arrow.png" alt="Retourner en haut" /></a> 
-<span class ="accessible-hidden"> <em lang ="en"> Menu </em> </span>
-</div>
-</button>
+    </body>
 </html>
 <style>
-:root {
+  :root {
 
 --base-color-h: 352;
   --base-color-s: 94%;
@@ -139,128 +131,143 @@
   --mdc-theme-primary : #D2693D;
   --mdc-theme-on-primary :#fff;
 }
-/* .row{
+.row{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-column-gap: 1em;
 }
-@media (max-width: 800px){
+@media (max-width: 500px){
     .row{
         grid-template-columns: 0.5fr 0.5fr 0.5fr;
     }
-} */
-    .panel-table .panel-body{
-  padding:0;
-  
-}
-
-.panel-table .panel-body .table-bordered{
-  border-style: none;
-  margin:0;
-  width: auto;
-}
-.recherche, .recherche button {
-    list-style-type: none;
-    display: flex;
-    margin: 2px 2px 2px 2px;
 }
 ol, li{
   list-style-type: none;
     display: flex;
     margin: 2px 2px 2px 2px;
     margin-right: 3px;
-
-}
-.create, .create button{
-  float: right;
-  margin-right: 0px;
-  margin-bottom: 0px;
-}
-
-.panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
-    text-align:center;
-    width: 110px;
-}
-
-.panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
-.panel-table .panel-body .table-bordered > tbody > tr > td:last-of-type {
-  border-right: 0px;
-  width: 100px;
-}
-
-.panel-table .panel-body .table-bordered > thead > tr > th:first-of-type,
-.panel-table .panel-body .table-bordered > tbody > tr > td:first-of-type {
-  border-left: 0px;
-  width: 100px;
-}
-
-.panel-table .panel-body .table-bordered > tbody > tr:first-of-type > td{
-  border-bottom: 0px;
-}
-
-.panel-table .panel-body .table-bordered > thead > tr:first-of-type > th{
-  border-top: 0px;
-}
-
-.panel-table .panel-footer .pagination{
-  margin:0; 
-}
-
-/*
-used to vertically center elements, may need modification if you're not using default sizes.
-*/
-.panel-table .panel-footer .col{
- line-height: 34px;
- height: 34px;
-}
-
-.panel-table .panel-heading .col h3{
- line-height: 30px;
- height: 30px;
-}
-
-.panel-table .panel-body .table-bordered > tbody > tr > td{
-  line-height: 34px;
-  font-size: 0.8em;
-  font-family: Arial, Helvetica, sans-serif;
-}
-h1 {
-    text-align: center;
-    border: solid 1px;
-    background-color: grey;
-    color : white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3em;
-}
-#searchbar{
-    position:relative;  /*décale par rapport a la position normal */
-    width:1040px;
-    height:auto;
-    display:inline-block;
-    margin-top : 0px;
-}
-#searchbar .text{
-    width:200px;
-    margin-top: 0px;   
-}
-#searchbar .champ{
-    width:200px;
-    height:35px;
-    float:left;
-    margin-top: 0;
-}
-#searchbar .bouton{
-    width: 50px;
-    height: 35px;
-    padding: 0;
-    border-radius: 5px;
-    float:left;
 }
 .modif{
   text-align: right;
-  margin-top:0;
+  margin-bottom:10px;
 }
+.pencil img{
+  width: 20px;;
+}
+.trash img{
+width: 20px;
+}
+
+#banniere_image
+{
+    height: 250px;
+    border-radius: 8px; 
+    background: url(https://www.cjoint.com/doc/20_05/JEmrQBvS4dV_banniere.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    box-shadow: 0px 7px 7px 0px #1c1a19;
+    margin-bottom: 20px;
+}
+
+#bloc1{
+    border-radius: 8px; 
+    position: relative;
+    box-shadow: 0px 7px 7px 0px #1c1a19;
+    margin-bottom: var(--length-L);
+    text-align: justify;
+    padding: 10px;
+}
+.create, .create button{
+  text-align: right;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.create img{
+  width: 15px;
+}
+header
+{
+    display: flex;
+    justify-content: space-between;
+}
+header h1
+{
+    font-family: cursive, Serif, sans-serif;
+    font-size: 2.5em;
+    font-weight: normal;
+    text-align:center;
+    align-content: center;
+}
+
+.titre_principal
+{
+    text-align:center;
+    align-content: center;
+}
+
+
+#bloc1 h1{
+    text-align: center;
+}
+
+#logo h1{
+    text-align: center;
+} 
+
+body
+{
+    background: url(https://www.cjoint.com/doc/20_05/JEmrNlJJgCV_back.jpg);
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+nav ul
+{
+   display: inline-flex;
+    align-self: flex-end;
+    justify-content: justify;
+    align-content: center;
+    text-align: center;
+    border : 1px;
+
+} 
+
+nav li
+{
+  background-color: var(--mdc-theme-primary);
+  padding: 5px 5px;
+  margin-left: var(--length-S);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  border: 1px solid var(--mdc-theme-primary);
+  border-radius: 3px;
+  margin-top: var(--length-S);
+  margin-bottom: var(--length-S);
+  color : var(--mdc-theme-on-primary);
+}
+nav ul a {
+
+    font-size: 0.8em;
+    text-decoration: none;
+    color : var(--mdc-theme-on-primary);
+}
+
+nav ul a:hover
+{
+    color: blue;
+    border-bottom: 3px solid #760001;
+    transition-duration: 1s;
+}
+nav {
+    text-align: center;
+}
+button {
+    position: relative;
+}
+
 button:hover span.accessible-hidden {
     left: 50%;
     margin-left: -50%;
@@ -272,12 +279,12 @@ button:hover span.accessible-hidden {
     padding: 0.5em;
     border-radius: 5px;
 }
-.buttonDem {
-    width: 50px;
+.buttonAdil {
+    width: 25px;
     height: 25px;
 
 }
-.LinkedInDem{
+.InstaAdil{
     width: 25px;
     height: 25px;
 }
@@ -302,6 +309,10 @@ span.accessible-hidden {
     align-content: center;
     text-align: center;
 
+}
+.table, .table td, .table th{
+  border : 1px solid;
+  text-align: center;
 }
 
 </style>
