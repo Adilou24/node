@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<head id="head">
   <script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
-<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-
-	gtag('config', 'GA_TRACKING_ID');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="description de DEM GROUP">
-    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css" />
     <title>SERIVORE</title>
-    <head id = "head"> 
       <ol>
       <li>
         <form action ="/confirm" method="GET"><button type ="submit">Delete Account</button>
@@ -28,57 +19,58 @@
     </li>
   </ol>
       
-  <form id="modif" action = "/userFormUpdate" method="GET">
+  <form class="modif" action = "/userFormUpdate" method="GET">
     <button type="submit" ><em>Modifier profil</em></button>
     </form>
     </head>
-</head>
  <body>
+            
+            <div id="banniere_image" role="banner">
+                
+            </div>
             <nav>
                     <ul>
                         <li><a href="/mainpage">Serie</a></li>
                           <li><a href="/categoriename">Catégorie</a></li>
                     </ul>
                 </nav>
-                <section id = "bloc1" role="about catégorie name" >
-                   <h1>Liste des catégories</h1>
-                    <div class="create">
-                    <a href= "/addcategorie"><img src="https://www.cjoint.com/doc/20_05/JEmsu2lX8XV_plus.png" alt="ajouter serie">Create New Catégorie</a>
-                    </div>
-
-                    <nav>
-                      <% for (let i = 0 ;  i < catégorie.length ; i++) { %> 
-                      <ul>
-                     <li><a href= "/categoriebtn/<%= catégorie[i].category %>"><%= catégorie[i].category %></a></li>
-                        <% } %>
-                      </ul>
-                    </nav>
-                    <p align="center">Veuillez selectionner une catégorie pour afficher la liste des séries qui sont dans votre base de données</p>
-                    <div class="img_centrale">
-                    <img src="https://www.cjoint.com/doc/20_05/JEhuuvTO0PV_Image1.png" alt="catégorie serie">
-                    </div>
+                <section id = "bloc1" role="navigation" >
+                  <h1>Liste des catégories</h1>
+                  <div class="create">
+                  <a href= "/addcategorie"><img src="https://www.cjoint.com/doc/20_05/JEmsu2lX8XV_plus.png" alt="ajouter serie">Create New Catégorie</a>
+                  </div>
+                  <% for (let i = 0 ;  i < catégorie.length ; i++){ %> </br> 
+                  <form action = "/categoriebtn/<%= catégorie[i].category %>" method="GET"> </br>
+                   <button class="indiv" type="submit" class="btn btn-sm btn-primary btn-create">
+                   <%= catégorie[i].category %></button> 
+                  </form>
+                  <% } %>
+                
+                  <p align="center">Veuillez selectionner une catégorie pour afficher la liste des séries qui sont dans votre base de données</p>
+                  <div class="img_centrale">
+                  <img src="https://www.cjoint.com/doc/20_05/JEhuuvTO0PV_Image1.png" alt="catégorie serie"/>
+                  </div>
                 </section>
-
  <button><div id="scroll_to_top"> 
-    <a href="#modif"><img src="https://www.cjoint.com/doc/20_05/JEmseQchvoV_arrow.png" alt="Retourner en haut" /></a> 
-    <span class ="accessible-hidden"> <em lang ="en"> Menu </em> </span>
+    <a href="#banniere_image"><img src="https://www.cjoint.com/doc/20_05/JEmseQchvoV_arrow.png" alt="Retourner en haut" /></a> 
+    <span class ="accessible-hidden"> <em lang ="en">Menu</em> </span>
 </div>
 </button>
+<footer>
+  <h2> Suivez moi sur : </h2>
+   <div class="socialMedia" >
+   <button>
+   <a href ="https://www.facebook.com/gintoki.mbalambala" target="_blank"> 
+     <img class = "buttonAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyfFCMuV_fcb.png" alt ="facebook de adil" aria-hidden = "True"> </a>
+     <span class ="accessible-hidden"> <em lang ="en"> Facebook </em> </span>
+   </button>
+   <button>
+   <a href ="https://www.instagram.com/adil_bmd/?hl=fr" target="_blank"> 
+     <img class = "InstaAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyNIjKPV_insta.png" alt ="Instagram de Adil" aria-hidden = "True"> </a>
+     <span class ="accessible-hidden"> <em lang ="en"> LinkdeIn </em> </span>
+   </button> </div>
+</footer>
     </body>
-    <footer>
-      <h2> Suivez moi sur : </h2>
-       <div class="socialMedia" >
-       <button>
-       <a href ="https://www.facebook.com/gintoki.mbalambala" target="_blank"> 
-         <img class = "buttonAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyfFCMuV_fcb.png" alt ="facebook de adil" aria-hidden = "True">
-         <span class ="accessible-hidden"> <em lang ="en"> Facebook </em> </span></a>
-       </button>
-       <button>
-       <a href ="https://www.instagram.com/adil_bmd/?hl=fr" target="_blank"> 
-         <img class = "InstaAdil" src= "https://www.cjoint.com/doc/20_05/JEmtyNIjKPV_insta.png" alt ="Instagram de Adil" aria-hidden = "True"> </a>
-         <span class ="accessible-hidden"> <em lang ="en"> LinkdeIn </em> </span>
-       </button> </div>
-    </footer>
 </html>
 <style>
   :root {
@@ -115,15 +107,30 @@ ol, li{
     margin: 2px 2px 2px 2px;
     margin-right: 3px;
 }
-#modif{
+.modif{
   text-align: right;
   margin-bottom:10px;
+}
+.img_centrale img{
+width: 500px;
 }
 .pencil img{
   width: 20px;;
 }
 .trash img{
 width: 20px;
+}
+
+#banniere_image
+{
+    height: 250px;
+    border-radius: 8px; 
+    background: url(https://www.cjoint.com/doc/20_05/JEmrQBvS4dV_banniere.jpg) no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    box-shadow: 0px 7px 7px 0px #1c1a19;
+    margin-bottom: 20px;
 }
 
 #bloc1{
@@ -133,6 +140,7 @@ width: 20px;
     margin-bottom: var(--length-L);
     text-align: justify;
     padding: 10px;
+    width: 500px;
 }
 .create, .create button{
   text-align: right;
@@ -269,8 +277,4 @@ span.accessible-hidden {
   border : 1px solid;
   text-align: center;
 }
-.img_centrale{
-  text-align: center;
-}
-
 </style>
